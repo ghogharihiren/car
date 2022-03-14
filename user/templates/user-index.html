@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- /.website title -->
+        <title>INDEX</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="UTF-8" />
+        <!-- CSS Files -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/helper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/animate.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+
+        <!-- Colors -->
+        <!-- <link href="css/css-index-blue.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+        <link href="{% static 'css/css-index-yellow.css' %}" rel="stylesheet" media="screen"> 
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+    </head>
+
+    <body data-spy="scroll" data-target="#navbar-scroll">
+
+        <!-- /.preloader -->
+        <div id="preloader"></div>
+        <div id="top"></div>
+
+        <!-- /.parallax full screen background image -->
+        <div class="fullscreen landing parallax" style="background-image:url('{% static "images/bg3.jpg" %}');" data-img-width="2000" data-img-height="1333" data-diff="100">
+
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+
+                            <!-- /.logo -->
+                            
+
+                            <!-- /.main title -->
+                            <h1 class="wow fadeInLeft">
+                                Beautiful Journy <span class="color">With</span> Car pooling
+                            </h1>
+
+                            <!-- /.header paragraph -->
+                            <div class="landing-text wow fadeInUp">
+                                <p>Carpooling is the sharing of car journys so that more then one person travels in a car</p>
+                            </div>				  
+
+                            <!-- /.header button -->
+                           
+
+
+                        </div> 
+
+                        <!-- /.signup form -->
+                        <div class="col-md-5">
+
+                            <div class="signup-header wow fadeInUp">
+                                <h3 class="form-title text-center">Quote & Reservation</h3>
+                                <form class="form-header" action="booking-step-two.html"  method="POST" id="bookingForm"> 
+                                    <div id="booking_control" class="booking_control">
+                                        <div class="form-group">
+                                            <input class="form-control input-lg" name="picking_up" id="picking_up" type="text" placeholder="Picking up" required>
+                                            <a class="btn-geolocation btn-geolocation1" onclick="getLocation()" href="#"><i class="pe-7s-map-marker"></i></a>
+                                        </div> 
+                                       
+                                        <div class="form-group">
+                                            <input class="form-control input-lg" name="dropping_off" id="dropping_off" type="text" placeholder="Dropping off" required>
+                                            <a class="btn-geolocation btn-geolocation2" onclick="getLocationDestination()" href="#"><i class="pe-7s-map-marker"></i></a>
+                                        </div>
+
+                                        <div class="form-group last">
+                                            <input type="button" id="find_direction" class="btn btn-warning btn-block btn-lg" value="FIND DIRECTION">
+                                            <i class="load_icon pe-7s-refresh pe-spin directionLoad display_none"> </i>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="map_div display_none">
+                                        <a class="close_map"><i class="pe-7s-close"></i></a>
+                                        <div id="map_canvas" class="map_div"></div> 
+                                    </div>                                    
+                                </form>
+                            </div>				
+
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <!-- NAVIGATION -->
+        <div id="menu">
+            <nav class="navbar-wrapper navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-backyard">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                       
+                    </div>
+
+                    <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'show-car' %}">Show car</a></li>
+                            <li><a href="taxi.html">Booking Page</a></li>
+                            <li><a href="services.html">Login page</a></li>
+                            <li class="ymm-sw">
+                            <li><a href="{% url 'user-register' %}">Register</a></li>
+                            <li><a href="{% url 'my-profile' %}">My Profile</a></li>
+                            <li><a href="{% url 'user-logout' %}">logout</a></li>
+                            <li><a href="{% url 'search' %}">search</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="testi">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="wow fadeInLeft">TESTIMONIALS</h2>
+                    <div class="title-line wow fadeInRight"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">	
+                        <div id="owl-testi" class="owl-carousel owl-theme wow fadeInUp">
+
+                            <!-- /.testimonial 1 -->
+                            <div class="testi-item">
+                                <div class="client-pic text-center">
+
+                                    <!-- /.client photo -->
+                                    <img src="{% static 'images/testimonial1' %}.jpg" alt="client">
+                                </div>
+                                <div class="box">
+
+                                    <!-- /.testimonial content -->
+                                    <p class="message text-center">"
+                                        Phasellus vitae mauris id sem malesuada viverra. Sed porttitor tempor sapien, a tempor urna vestibulum sed. Proin erat nisi, dictum et nunc non, ornare congue est. Praesent in euismod sem, et egestas lorem Nunc et orci ac neque semper. 
+                                        "</p>
+                                </div>
+                                <div class="client-info text-center">
+
+                                    <!-- /.client name -->
+                                    Kimaro Kyoto, <span class="company">Microsoft</span>	
+                                </div>
+                            </div>		
+
+                            <!-- /.testimonial 2 -->
+                            <div class="testi-item">
+                                <div class="client-pic text-center">
+
+                                    <!-- /.client photo -->
+                                    <img src="images/testimonial2.jpg" alt="client">
+                                </div>
+                                <div class="box">
+
+                                    <!-- /.testimonial content -->
+                                    <p class="message text-center">"Everything looks great... 
+                                        Donec ullamcorper nulla sed eleifend sagittis. Donec dapibus volutpat risus, id commodo dolor. Mauris interdum commodo neque, in tristique tellus soll."</p>
+                                </div>
+                                <div class="client-info text-center">
+
+                                    <!-- /.client name -->
+                                    Mike Portnoy, <span class="company">ImortalTheme</span>	
+                                </div>
+                            </div>				
+
+                            <!-- /.testimonial 3 -->
+                            <div class="testi-item">
+                                <div class="client-pic text-center">
+
+                                    <!-- /.client photo -->
+                                    <img src="images/testimonial3.jpg" alt="client">
+                                </div>
+                                <div class="box">
+
+                                    <!-- /.testimonial content -->
+                                    <p class="message text-center">"
+                                        Nulla eget dictum diam. Maecenas sed enim sed erat lobortis finibus. Sed non arcu lacinia, posuere orci ut, suscipit tortor. Etiam id nulla vel libero porta fringilla. Nunc porta at lacus a convallis."</p>
+                                </div>
+                                <div class="client-info text-center">
+
+                                    <!-- /.client name -->
+                                    Jennifer Hewitt, <span class="company">ImortalTheme</span>	
+                                </div>
+                            </div>			
+
+                        </div>
+                    </div>	
+                </div>	
+            </div>
+        </div>
+
+     
+        
+        <!-- /.footer -->
+        <footer id="footer">
+                <div id="copyright">
+                    <div class="container">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <!-- /.social links -->
+                            <div class="social text-center">
+                                <ul>
+                                    <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>	
+
+                            <div class="text-center wow fadeInUp" style="font-size: 14px;">Copyright VTC Theme 2016 - Template by <a href="http://www.Kimarotec.com">kimaroTheme</a></div>
+                            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+                        </div>	
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+
+        <!-- /.javascript files -->
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+        <script src="{% static 'js/google.js' %}"></script> 
+        <script src="{% static 'js/booking.js' %}"></script> 
+        <script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script> 
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script> 
+
+        <script src="{% static 'js/snap.svg-min.js' %}"></script> 
+        <script src="{% static 'js/hovers.js' %}"></script> 
+
+
+        <script>
+                                                new WOW().init();
+                                                $('#date_time').datetimepicker({
+                                                    format: 'dd/MM/yyyy hh:mm:ss',
+                                                    language: 'en-US',
+                                                    pickDate: true, // disables the date picker
+                                                    pickTime: true
+                                                });
+        </script>
+
+        <script>
+            (function () {
+                function init() {
+                    var speed = 250,
+                            easing = mina.easeinout;
+                    [].slice.call(document.querySelectorAll('#carssections > div')).forEach(function (el) {
+                        var s = Snap(el.querySelector('svg')), path = s.select('path'),
+                                pathConfig = {
+                                    from: path.attr('d'),
+                                    to: el.getAttribute('data-path-hover')
+                                };
+
+                        el.addEventListener('mouseenter', function () {
+                            path.animate({'path': pathConfig.to}, speed, easing);
+                        });
+
+                        el.addEventListener('mouseleave', function () {
+                            path.animate({'path': pathConfig.from}, speed, easing);
+                        });
+                    });
+                }
+                init();
+            })();
+        </script>
+
+    </body>
+</html>

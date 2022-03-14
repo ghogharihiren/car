@@ -1,0 +1,139 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block title %}
+<title>Profile Change</title>
+{% endblock %}
+
+{% block add-car %}
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'add-car' %}">
+    <!-- <i class="ni ni-planet text-orange"></i> -->
+    <i class="fas fa-shopping-bag" style="color: red;"></i>
+    <span class="nav-link-text">Add car</span>
+  </a>
+</li>
+{% endblock %}
+
+
+{% block content %}
+    <!-- Header -->
+    <!-- Header -->
+    <br><br><br><br><br>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Add car </h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="{% url 'profile' %}" class="btn btn-sm btn-primary">Settings</a>
+                </div>
+              </div>
+            </div>
+            {{msg}}
+            <div class="card-body">
+              <form action="{% url 'add-car' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">add car deatils</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-username">car Name</label>
+                        <input type="text" id="input-username" name="name" class="form-control" placeholder="car name" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">car model</label>
+                        <input type="text" id="input-email" class="form-control" name="model" placeholder="car model" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">car Number</label>
+                          <input type="text" id="input-email" class="form-control" name="number" placeholder="car number" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Total seat</label>
+                          <input type="number" id="input-email" class="form-control" name="totalseat" placeholder="Total seat" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">satrt point</label>
+                          <select name="startpoint" class="form-control" id="">
+                            <option value="">--</option>
+                            {% for Startpoint in  Startpoint %}
+                            
+                            <option value="{{ Startpoint.value}}">{{ Startpoint.name}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">destination</label>
+                          <select name="destination" class="form-control" id="">
+                            <option value="">--</option>
+                            {% for Destination in Destination %}
+                            
+                            <option value="{{Destination.value}}">{{Destination.name}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                      </div>
+                     
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">available seat</label>
+                          <input type="number" id="input-email" class="form-control" name="availableseat" placeholder="available seat" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">price per seat</label>
+                          <input type="number" id="input-email" class="form-control" name="price" placeholder="price per seat" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">date</label>
+                        <input type="text" id="input-email" class="form-control" name="date" placeholder="date" required>
+                      </div>
+                    </div>
+                     
+               
+              
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Product Pic</label> 
+                        <input type="file" id="input-last-name" class="form-control"  name="carpic" placeholder="Last name" required >
+                      </div>
+                    </div>
+                 
+                <!-- <hr class="my-4" />
+                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">About Me</label>
+                    <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                  </div>
+                </div> -->
+                <button class="btn btn-primary" type="submit" style="margin-left: 20px;"><i class="fa fa-shopping-bag"></i> Submit </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      {% endblock %}
