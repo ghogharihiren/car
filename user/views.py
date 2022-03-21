@@ -4,10 +4,17 @@ from .models import *
 from django.conf import settings
 from django.core.mail import send_mail
 from owner import models as o
-
+import razorpay
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
+from datetime import date
+from random import randrange
 
 def user_index(request):
-    return render(request,'user-index.html') 
+    uid = passenger.objects.get(email=request.session['uemail'])
+    
+    return render(request,'user-index.html',{'uid':uid}) 
     
 def user_register(request):
     if request.method=='POST':
@@ -109,22 +116,125 @@ def my_profile(request):
     return render(request,'my-profile.html',{'uid':uid})
 
 def show_car(request):
-    car=o.car.objects.all().order_by('?')
+    Car=o.car.objects.all().order_by('?')
     Startpoint=o.startpoint.objects.all()
     Destination=o.destination.objects.all()
-    return render(request,'show-car1.html',{'car':car,'Startpoint':Startpoint,'Destination':Destination})
+    return render(request,'show-car.html',{'Car':Car,'Startpoint':Startpoint,'Destination':Destination})
 
-def book_car(request,pk):
-    return render(request,'user-index.html')
+def userview_car(request,pk):
+    Car = o.car.objects.get(id=pk)
+    reco = o.car.objects.filter(startpoint=Car.startpoint)
+    return render(request,'userview-car.html',{'Car':Car,'reco':reco})
 
-def search(request):
-    if request.method == 'POST':
-        query = request.POST['search']
-        car = list(car.objects.filter(name=query))
-        a = query.split()
-        temp = list(car)[0]
-        # for i in products:
-        pro = list(car.objects.filter(category =temp.category)) + car
-        print(list(pro))
-        return render(request,'search.html', {'pro':pro})
-    return render(request,'search.html')
+
+def  add_watchlist(request,pk):
+    try:
+        uid = passenger.objects.get(email=request.session['uemail'])
+        Car = car.objects.get(id=pk)
+        try:
+            Cart=cart.objects.get(uid=uid)
+            Cart.car.add(Car)
+            Cart.save()
+        except:
+            cart.objects.create(uid=uid)
+            Cart = cart.objects.get(uid=uid)
+            Cart.car.add(Car)
+            Cart.save()
+
+        return render(request,'userview-car.html',{'msg':'Car added','Car':Car})
+    except:
+        return render(request,'user-login.html')
+   
+razorpay_client = razorpay.Client(
+    auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+def book_now(request,pk):
+    Car = car.objects.get(id=pk)
+    currency = 'INR'
+    amount = Car.availableseat*Car.price*100  # Rs. 200
+ 
+    # Create a Razorpay Order
+    razorpay_order = razorpay_client.order.create(dict(amount=amount,
+                                                       currency=currency,
+                                                       payment_capture='0'))
+ 
+    # order id of newly created order.
+    razorpay_order_id = razorpay_order['id']
+    callback_url = f'paymenthandler/{Car.id}'
+ 
+    # we need to pass these details to frontend.
+    context = {}
+    context['razorpay_order_id'] = razorpay_order_id
+    context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
+    context['razorpay_amount'] = amount
+    context['currency'] = currency
+    context['callback_url'] = callback_url
+    context['product'] = Car
+    return render(request, 'payment-book.html', context=context)
+@csrf_exempt
+def paymenthandler(request,pk):
+ 
+    # only accept POST request.
+    if request.method == "POST":
+        try:
+            Car =car.objects.get(id=pk)
+            Passenger = passenger.objects.get(email=request.session['uemail'])
+            # get the required parameters from post request.
+            payment_id = request.POST.get('razorpay_payment_id', '')
+            razorpay_order_id = request.POST.get('razorpay_order_id', '')
+            signature = request.POST.get('razorpay_signature', '')
+            params_dict = {
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_payment_id': payment_id,
+                'razorpay_signature': signature
+            }
+ 
+            # verify the payment signature.
+            result = razorpay_client.utility.verify_payment_signature(
+                params_dict)
+            # if result is None:
+            amount = Car.availableseat*Car.price*100 # Rs. 200
+            try:
+                today = date.today()
+
+                # capture the payemt
+                razorpay_client.payment.capture(payment_id, amount)
+                Car.avalibaleseat -= 1
+                Car.save()
+                book.objects.create(
+                    Car = car,
+                    Passenger =  passenger,
+                    pay_id = payment_id,
+                    
+                )
+                # render success page on successful caputre of payment
+                return render(request, 'paymentsuccess.html')
+            except:
+
+                # if there is an error while capturing payment.
+                return render(request, 'paymentfail.html')
+            # else:
+ 
+            #     # if signature verification fails.
+            #     return render(request, 'paymentfail.html')
+        except:
+ 
+            # if we don't find the required parameters in POST data
+            return HttpResponseBadRequest()
+    else:
+       # if other than POST request is made.
+        return HttpResponseBadRequest()
+
+
+def my_watchlist(request):
+    uid = passenger.objects.get(email=request.session['uemail'])
+    Cart = cart.objects.get(uid=uid)
+    return render(request,'my-watchlist.html',{'uid':uid,'Cart':Cart})
+
+def remove_to_watchlist(request,pk):
+    Car=car.objects.get(id=pk)
+    uid= passenger.objects.get(email=request.session['uemail'])
+    Cart=cart.objects.get(uid=uid)
+    Cart.car.remove(Car)
+    Cart.save()
+    return redirect('my-watchlist')
+    

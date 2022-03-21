@@ -35,8 +35,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-   
+
+
+<body>
+
     <div class="header-area">
         <div class="container">
             <div class="row">
@@ -44,54 +46,35 @@
                     <div class="user-menu">
                         <ul>
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
                             <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">INR </span><b class="caret"></b></a>
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">INR</span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-                                
-                                 
+                                                                    
+                                </ul>
                             </li>
 
                             <li class="dropdown dropdown-small">
                                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
-                                </ul>
+                               
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End header area -->
-    
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    
-                </div>
-                
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-                        <a href="{% url 'my-watchlist' %}">watch-list <span class="cart-amunt"></span> <i class='fa fa-car'></i></a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
-    
+    </div>
+    <!-- End header area -->
+
+    <!-- End site branding area -->
+
     <div class="mainmenu-area">
         <div class="container">
             <div class="row">
@@ -102,61 +85,55 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                </div> 
+                </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{% url 'user-index' %}">Home</a></li>
-                        <li class="active"><a href="{% url 'user-login' %}">Login</a></li>
-                       
+                        
                     </ul>
-                </div>  
+                </div>
             </div>
         </div>
-    </div> <!-- End mainmenu area -->
-    
+    </div>
+    <!-- End mainmenu area -->
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Car</h2>
+                        <h2>Book Car</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                {% for Car in Car %}
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
-                        <div >
-                             <img src="{{Car.pic.url}}"alt="image"></img>
-                           
+                        <div class="product-upper">
+                            <img src="{{Car.pic.url}}" alt="">
                         </div>
-                        <h3><a href="">car name is:{{Car.name}}</a></h3>
-                        <h3><a href="">car model is:{{Car.model}}</a></h3>
-                        <h3><a href="">total seat:{{Car.totalseat}}</a></h3>
-                        <h3><a href="">avalibale seat:{{Car.availableseat}}</a></h3>
-                        <h3><a href="">journy date:{{Car.date}}</a></h3>
-                        <h3><a href="">journ:{{Car.startpoint}} To {{Car.destination}}</a></h3>
-                        <h3><a href="">price per seat:{{Car.price}}</a></h3>
-
+                        <h2><a href="">car name:{{Car.name}}</a></h2>
+                        <h2><a href="">car model:{{Car.model}}</a></h2>
+                        <h2><a href="">Journy details:{{Car.startpoint}} To {{Car.destination}}</a></h2>
+                        <h2><a href="">Total seat:{{Car.totalseat}}</a></h2>
+                        <h2><a href="">Available seat:{{Car.availableseat}}</a></h2>
+                        <h2><a href="">Journy date:{{Car.date}}</a></h2>
+                        <h2><a href="">Owner Email:{{Car.uid.email}}</a></h2>
+                        <h2><a href="">Price per seat:{{Car.price}}</a></h2>
                         
-                        <div class="text-center">
-                            <a href="{% url 'userview-car' Car.id %}"><button class="btn btn-info"> view-car</button></a>
-                        </div>                       
+                        <div class="product-option-shop">
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{% url 'booking' Car.id%}">book</a>
+                        </div>
                     </div>
                 </div>
-                {% endfor %}
-                
             </div>
-            
-        </div>
         </div>
     </div>
 
@@ -166,33 +143,38 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                       <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
-                    
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-   
-    <!-- Latest jQuery form server -->
-    <script src="https://code.jquery.com/jquery.min.js' %}"></script>
+
+     <!-- Latest jQuery form server -->
+     <script src="https://code.jquery.com/jquery.min.js' %}"></script>
     
-    <!-- Bootstrap JS form CDN -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %}"></script>
-    
-    <!-- jQuery sticky menu -->
-    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
-    
-    <!-- jQuery easing -->
-    <script src="{% static 'assets/js/jquery.easing.1.3.min.js' %}"></script>
-    
-    <!-- Main Script -->
-    <script src="{% static 'assets/js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assetsjs/bxslider.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assetsjs/script.slider.js' %}"></script>
-  </body>
-</html>
+     <!-- Bootstrap JS form CDN -->
+     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %}"></script>
+     
+     <!-- jQuery sticky menu -->
+     <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+     
+     <!-- jQuery easing -->
+     <script src="{% static 'assets/js/jquery.easing.1.3.min.js' %}"></script>
+     
+     <!-- Main Script -->
+     <script src="{% static 'assets/js/main.js' %}"></script>
+     <script type="text/javascript" src="{% static 'assetsjs/bxslider.min.js' %}"></script>
+     <script type="text/javascript" src="{% static 'assetsjs/script.slider.js' %}"></script>
+   </body>
+ </html>

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All Car</title>
+    <title>my watch list</title>
     
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -131,7 +131,7 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                {% for Car in Car %}
+                {% for Car in Cart.car.all %}
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div >
@@ -148,7 +148,9 @@
 
                         
                         <div class="text-center">
-                            <a href="{% url 'userview-car' Car.id %}"><button class="btn btn-info"> view-car</button></a>
+                            <a href="{% url 'book-now' Car.id %}"><button class="btn btn-info">book-now</button></a>
+                            <a href="{% url 'remove-to-watchlist' Car.id %}"><button class="btn btn-info">remove</button></a>
+
                         </div>                       
                     </div>
                 </div>

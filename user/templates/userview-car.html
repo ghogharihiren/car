@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All Car</title>
+    <title>view-car</title>
     
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -82,11 +82,6 @@
                     
                 </div>
                 
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-                        <a href="{% url 'my-watchlist' %}">watch-list <span class="cart-amunt"></span> <i class='fa fa-car'></i></a>
-                    </div>
-                </div>
                 
             </div>
         </div>
@@ -131,13 +126,13 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                {% for Car in Car %}
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div >
                              <img src="{{Car.pic.url}}"alt="image"></img>
                            
                         </div>
+                        <h3>{{msg}}</h3>
                         <h3><a href="">car name is:{{Car.name}}</a></h3>
                         <h3><a href="">car model is:{{Car.model}}</a></h3>
                         <h3><a href="">total seat:{{Car.totalseat}}</a></h3>
@@ -145,39 +140,46 @@
                         <h3><a href="">journy date:{{Car.date}}</a></h3>
                         <h3><a href="">journ:{{Car.startpoint}} To {{Car.destination}}</a></h3>
                         <h3><a href="">price per seat:{{Car.price}}</a></h3>
+                    </div>
+                    <h3> owner By : </h3><br>
+                    
+                    <h3>{{Car.uid.email}} </h3>  
+
+                </div>
 
                         
                         <div class="text-center">
-                            <a href="{% url 'userview-car' Car.id %}"><button class="btn btn-info"> view-car</button></a>
+                            <a href="{% url 'book-now' Car.id%}"><button class="btn btn-info"> book car</button></a>
+                            <a class="add_to_cart_button" href="{% url 'add-watchlist' Car.id%}">add to watch</a>
                         </div>                       
                     </div>
                 </div>
-                {% endfor %}
-                
+               
             </div>
             
         </div>
         </div>
     </div>
 
-
-        <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="copyright">
-                       <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-   
-    <!-- Latest jQuery form server -->
+    <div class="row tm-gallery">
+        <!-- gallery page 1 -->
+        <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+            {% for one in reco %}
+            <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+                <figure>
+                    <img src="{{one.pic.url}}" alt="Image" class="img-fluid tm-gallery-img" />
+                    <figcaption>
+                        <a href="{% url 'userview-car' one.id %}"><h4 class="tm-gallery-title">{{one.name}}</h4></a>
+                        <p class="tm-gallery-description">{{one.model}}</p>
+                        <p class="tm-gallery-description">{{one.startpoint}}</p>
+                        <p class="tm-gallery-description">{{one.destination}}</p>
+                        <p class="tm-gallery-price">$ {{one.price}}</p>
+                    </figcaption>
+                </figure>
+            </article>
+            {% endfor %}
+        </div> 
+    </div>   
     <script src="https://code.jquery.com/jquery.min.js' %}"></script>
     
     <!-- Bootstrap JS form CDN -->

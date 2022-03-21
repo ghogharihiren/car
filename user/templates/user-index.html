@@ -68,7 +68,8 @@
 
                             <div class="signup-header wow fadeInUp">
                                 <h3 class="form-title text-center">Quote & Reservation</h3>
-                                <form class="form-header" action="booking-step-two.html"  method="POST" id="bookingForm"> 
+                                <form  action="{% url 'user-index' %}"  method="POST"
+                                {% csrf_token %}
                                     <div id="booking_control" class="booking_control">
                                         <div class="form-group">
                                             <input class="form-control input-lg" name="picking_up" id="picking_up" type="text" placeholder="Picking up" required>
@@ -118,12 +119,12 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{% url 'show-car' %}">Show car</a></li>
                             <li><a href="taxi.html">Booking Page</a></li>
-                            <li><a href="services.html">Login page</a></li>
+                            <li><a href="{% url 'my-watchlist' %}">my-watchlist</a></li>
                             <li class="ymm-sw">
                             <li><a href="{% url 'user-register' %}">Register</a></li>
                             <li><a href="{% url 'my-profile' %}">My Profile</a></li>
                             <li><a href="{% url 'user-logout' %}">logout</a></li>
-                            <li><a href="{% url 'search' %}">search</a></li>
+                            
                         </ul>
                     </div>
                 </div>
