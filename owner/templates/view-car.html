@@ -26,7 +26,7 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Light table</h3>
+            <h3 class="mb-0">MY CAR</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
@@ -45,6 +45,7 @@
               </thead>
               <tbody class="list">
                 {% for Car in Car %}
+                {% if Car.availableseat > 0 %}
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
@@ -87,48 +88,18 @@
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                         <a class="dropdown-item" href="{% url 'edit-car' Car.id %}">Edit</a>
                         <a class="dropdown-item" href="{% url 'delete' Car.id %}">Delete</a>
-                        {% if Car.active == True %}
-                        <a class="dropdown-item" href="{% url 'disable' Car.id %}">disabled</a>
-                        {% else %}
-                        <a class="dropdown-item" href="{% url 'enable' Car.id %}">Enabled</a>
-                        {% endif %}
+                      
                       </div>
                     </div>
                   </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
               </tbody>
             </table>
           </div>
-          <!-- Card footer -->
-          <div class="card-footer py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
     </div>
-    <!-- Dark table -->
     
 {% endblock %}

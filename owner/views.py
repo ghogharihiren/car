@@ -7,6 +7,7 @@ from random import randrange,choices
 from django.conf import settings
 from django.core.mail import send_mail
 from json import loads
+from user.models import book
 
 
 
@@ -155,12 +156,12 @@ def add_car(request):
         msg='car added successfully'
         return render(request,'add-car.html',{'uid':uid,'msg':msg,'Startpoint':Startpoint,'Destination':Destination})   
     
-    return render(request,'add-car.html',{'Startpoint':Startpoint,'Destination':Destination})
+    return render(request,'add-car.html',{'uid':uid,'Startpoint':Startpoint,'Destination':Destination})
 
 def view_car(request):
    
    uid=owner.objects.get(email=request.session['email'])
-   Car=car.objects.filter(uid=uid)[::-1]
+   Car=car.objects.filter(uid=uid)
    return render(request,'view-car.html',{'uid':uid,'Car':Car})
 
 def delete(request,pk):
@@ -187,14 +188,28 @@ def edit_car(request,pk):
         return render(request,'edit-car.html',{'uid':uid,'Car':Car,'msg':'update car details'})
     return render(request,'edit-car.html',{'uid':uid,'Car':Car})
 
-def disable(request,pk):
-    Car=car.objects.get(id=pk)
-    Car.active = False
-    Car.save()
-    return redirect('view-car')
+def book_car(request):
+    uid=owner.objects.get(email=request.session['email'])
+    if request.method == 'POST':
+        if request.POST['journy_status'] == 'panding':
+            Book = book.objects.filter(status=False)
+        elif request.POST['journy_status'] == 'complate':
+            Book = book.objects.filter(status=True)  
+        else:
+            Book = book.objects.all()              
+            
+        return render('book-car.html',{'uid':uid,'Book':Book})
+    Book=book.objects.filter(status=False)
+    return render(request,'book-car.html',{'uid':uid,'Book':Book})
 
-def enable(request,pk):
-    Car=car.objects.get(id=pk)
-    Car.active = True
-    Car.save()
-    return redirect('view-car')
+def complate_journy(request,pk):
+    uid=owner.objects.get(email=request.session['email'])
+    Book=book.objects.get(id=pk)
+    Book.journy_status=True
+    Book.save()
+    return redirect('book-car')
+
+def my_bookcar(request,pk):
+    uid=owner.objects.get(email=request.session['email'])
+    Book=book.objects.get(id=pk)
+    return render(request,'my-bookcar.html',{'Book':Book,'uid':uid})

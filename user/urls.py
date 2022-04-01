@@ -10,12 +10,13 @@ urlpatterns = [
     path('user-logout/',views.user_logout,name='user-logout'),
     path('user-forgotpassword/',views.user_forgotpassword,name='user-forgotpassword'),
     path('my-profile/',views.my_profile,name='my-profile'),
-    path('show-car/',views.show_car,name='show-car'),
+    path('search/',views.search,name='search'),
     path('userview-car/<int:pk>',views.userview_car,name='userview-car'),
     path('add-watchlist/<int:pk>',views.add_watchlist,name='add-watchlist'),
     path('my-watchlist/',views.my_watchlist,name='my-watchlist'),
     path('remove-to-watchlist/<int:pk>',views.remove_to_watchlist,name='remove-to-watchlist'),
     path('book-now/<int:pk>',views.book_now,name='book-now'),
     path('book-now/paymenthandler/<int:pk>', views.paymenthandler, name='paymenthandler'),
-    
+    path('my-booking',views.my_booking,name='my-booking'),
+    path('cancel-booking/<int:pk>',views.cancel_booking,name='cancel-booking')
 ] 

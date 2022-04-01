@@ -1,180 +1,202 @@
 {% load static %}
 <!DOCTYPE html>
-<!--
-	ustora by freshdesignweb.com
-	Twitter: https://twitter.com/freshdesignweb
-	URL: https://www.freshdesignweb.com/ustora/
--->
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All Car</title>
-    
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-    
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+<html>
+    <head>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+        <!-- /.website title -->
+        <title>Booking</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="UTF-8" />
+        <!-- CSS Files -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/helper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/animate.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
 
+        <!-- Colors -->
+        <!-- <link href="css/css-index-blue.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+        <link href="{% static 'css/css-index-yellow.css' %}" rel="stylesheet" media="screen"> 
 
-<body>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
 
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            
-                        </ul>
+    </head>
+
+    <body data-spy="scroll" data-target="#navbar-scroll">
+
+        <!-- /.preloader -->
+        
+       
+            <!-- NAVIGATION -->
+            <div id="menu">
+                <nav class="navbar-wrapper navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-backyard">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                           
+                        </div>
+    
+                        <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{% url 'user-index' %}">HOME</a></li>
+                                <li><a href="{% url 'my-booking' %}">Booking Page</a></li>
+                                <li><a href="{% url 'my-watchlist' %}">my-watchlist</a></li>                                    
+                                <li><a href="{% url 'my-profile' %}">My Profile</a></li>
+                                <li><a href="{% url 'user-logout' %}">logout</a></li>                                                       
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </nav>
+            </div>
 
-                <div class="col-md-4">
-                    <div class="header-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">INR</span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                                                    
+        <div id="booking-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <section id="id-130" class="booking booking-2 booking-car">
+                            <div class="booking-section">
+                                <div class="booking-top-nav wow fadeInTop animated" data-wow-delay="0.9s">                                
+                                </div>
+                                <div class="stpe-content">
+                                    <div class="direction-data wow fadeInDown animated"></div>
+                                    <div class="cars-data wow fadeInUpBig animated"> 
+                                        <div class="car-item wow fadeInLeft animated">
+                                            <div class="li-car col-xs-12 col-sm-5 col-md-5">
+                                                <img src="{{Car.pic.url}}" alt="" class="car">
+                                            </div>
+                                            <div class="li-car-name col-sm-5 col-md-5">
+                                                <h2>Car:{{Car.name}},{{Car.name}}</h2>
+                                                <p>booking seat:{{Car.availableseat}}</p>
+                                                <div class="car-details">
+                                                    <div class="">
+                                                       
+                                                        <div class="clearfix"></div>
+                                                        <ul class="checklist">
+                                                            <li>journy:{{Car.startpoint}} to {{Car.destination}}</li>
+                                                            
+                                                        </ul> 
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="li-car-price col-xs-12 col-sm-2 col-md-2"> 
+                                                <div class="car-price-content">
+                                                    <b class="overflow car-price">Rs</b><b class="price-currency">{{pr}}</b><br>  
+                                                    <div class="btn_container">
+                                                        <!-- Payment Button -->
+                                                        <button class="btn-primary" id="pay-btn"  >Pay</button>
+                                                    </div>
+                                                    </div>                                                
+                                                </div>                                            
+                                            </div>
+                                        </div>                                                                         
+                                    </div>                      
+                                    <div class="pay-data hide wow fadeInLeft padding-10">                                                                               
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>                 
+                </div>
+            </div>
+        </div>
+        
+    
+    <!-- Razorpay's Javascript code. -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+        
+        // Enter the Key ID generated from the Dashboard
+        key: "{{ razorpay_merchant_key }}",
+        
+        // Amount is in currency subunits.
+        // Default currency is INR. Hence,
+        // 50000 refers to 50000 paise
+        amount: "{{ razorpay_amount }}",
+        currency: "{{ currency }}",
+        
+        // Your/store name.
+        name: "Dj Razorpay",
+        
+        // Pass the `id` obtained in the response of Step 1
+        order_id: "{{ razorpay_order_id }}",
+        callback_url: "{{ callback_url }}",
+        };
+        
+        // initialise razorpay with the options.
+        var rzp1 = new Razorpay(options);
+        
+        // add event listener to the payment button.
+        document.getElementById("pay-btn").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+        };
+    </script>
+
+       
+            
+        <!-- /.footer -->
+        <footer id="footer">        	         
+            <div class="footer-bottum">
+                <div id="copyright">
+                    <div class="container">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <!-- /.social links -->
+                            <div class="social text-center">
+                                <ul>
+                                    <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
-                            </li>
+                            </div>	
 
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
-                               
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End header area -->
-
-    <!-- End site branding area -->
-
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{% url 'user-index' %}">Home</a></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End mainmenu area -->
-
-    <div class="product-big-title-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="product-bit-title text-center">
-                        <h2>Book Car</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-shop-product">
-                        <div class="product-upper">
-                            <img src="{{Car.pic.url}}" alt="">
-                        </div>
-                        <h2><a href="">car name:{{Car.name}}</a></h2>
-                        <h2><a href="">car model:{{Car.model}}</a></h2>
-                        <h2><a href="">Journy details:{{Car.startpoint}} To {{Car.destination}}</a></h2>
-                        <h2><a href="">Total seat:{{Car.totalseat}}</a></h2>
-                        <h2><a href="">Available seat:{{Car.availableseat}}</a></h2>
-                        <h2><a href="">Journy date:{{Car.date}}</a></h2>
-                        <h2><a href="">Owner Email:{{Car.uid.email}}</a></h2>
-                        <h2><a href="">Price per seat:{{Car.price}}</a></h2>
-                        
-                        <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{% url 'booking' Car.id%}">book</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-        <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="copyright">
-                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                            <div class="text-center wow fadeInUp" style="font-size: 14px;">Copyright VTC Theme 2016 - Template by <a href="http://www.Kimarotec.com">kimaroTheme</a></div>
+                            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+                        </div>	
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="footer-card-icon">
-                        <i class="fa fa-cc-discover"></i>
-                        <i class="fa fa-cc-mastercard"></i>
-                        <i class="fa fa-cc-paypal"></i>
-                        <i class="fa fa-cc-visa"></i>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
+        </footer>
 
-     <!-- Latest jQuery form server -->
-     <script src="https://code.jquery.com/jquery.min.js' %}"></script>
-    
-     <!-- Bootstrap JS form CDN -->
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %}"></script>
-     
-     <!-- jQuery sticky menu -->
-     <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-     <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
-     
-     <!-- jQuery easing -->
-     <script src="{% static 'assets/js/jquery.easing.1.3.min.js' %}"></script>
-     
-     <!-- Main Script -->
-     <script src="{% static 'assets/js/main.js' %}"></script>
-     <script type="text/javascript" src="{% static 'assetsjs/bxslider.min.js' %}"></script>
-     <script type="text/javascript" src="{% static 'assetsjs/script.slider.js' %}"></script>
-   </body>
- </html>
+
+        <!-- /.javascript files -->
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+        <script src="{% static 'js/google.js' %}"></script> 
+        <script src="{% static 'js/booking.js' %}"></script> 
+        <script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script> 
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script> 
+
+        <script src="{% static 'js/snap.svg-min.js' %}"></script> 
+        <script src="{% static 'js/hovers.js' %}"></script> 
+
+
+        </script>
+
+       
+
+    </body>
+</html>

@@ -61,13 +61,10 @@
                         
                     <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="private-driver.html">Show car</a></li>
-                            <li><a href="taxi.html">Booking Page</a></li>
-                            <li><a href="services.html">Login page</a></li>
-                            <li class="ymm-sw">
-                            <li><a href="{% url 'user-register' %}">Register</a></li>
-                            <li><a href="{% url 'user-logout' %}">logout</a></li>
-                            <li><a href="{% url 'user-index' %}">Index</a></li>
+                            <li><a href="{% url 'user-index' %}">Home</a></li>
+                            <li><a href="{% url 'my-booking' %}">My booking</a></li>
+                            <li><a href="{% url 'my-watchlist' %}">my watchlist</a></li>                           
+                            <li><a href="{% url 'user-logout' %}">logout</a></li>                        
                         </ul>
                     </div>
                 

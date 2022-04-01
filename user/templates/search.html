@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- /.website title -->
+        <title>INDEX</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="UTF-8" />
+        <!-- CSS Files -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+        <link href="{% static 'fonts/icon-7-stroke/css/helper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/animate.css' %}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+
+        <!-- Colors -->
+        <!-- <link href="css/css-index-blue.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+        <link href="{% static 'css/css-index-yellow.css' %}" rel="stylesheet" media="screen"> 
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+    </head>
+
+    <body data-spy="scroll" data-target="#navbar-scroll">
+
+        <!-- /.preloader -->
+        <div id="preloader"></div>
+        <div id="top"></div>
+
+        <!-- /.parallax full screen background image -->
+        <div class="fullscreen landing parallax" style="background-image:url('{% static "images/bg3.jpg" %}');" data-img-width="2000" data-img-height="1333" data-diff="100">
+
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+
+                            <!-- /.logo -->
+                            
+                            <!-- /.main title -->
+                            <h1 class="wow fadeInLeft">
+                                Find your ride <span class="color"></span> 
+                            </h1>
+
+                            <!-- /.header paragraph -->
+                          		  
+
+                            <!-- /.header button -->
+                            <div class="head-btn wow fadeInLeft">
+                                <a href="{% url 'user-index' %}" class="btn btn-primary">Home</a>
+                                <a href="{% url 'my-profile'%}" class="btn btn-default">My account</a>
+                            </div>
+
+
+                        </div> 
+
+                        <!-- /.signup form -->
+                        <div class="col-md-5">
+                            <div class="signup-header wow fadeInUp">
+                                <h3 class="form-title text-center">Find car</h3>
+                                <form  action="{% url 'search' %}" method="POST" > 
+                                        {% csrf_token %}
+                                    <div id="booking_control" class="booking_control">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email">satrt point</label>
+                                            <select name="search" class="form-control" id="search">
+                                              <option value="">--</option>
+                                              {% for Startpoint in  Startpoint %}
+                                              
+                                              <option value="{{ Startpoint.value}}">{{ Startpoint.name}}</option>
+                                              {% endfor %}
+                                          </select>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email">destination</label>
+                                            <select name="search" class="form-control" id="search">
+                                              <option value="">--</option>
+                                              {% for Destination in Destination %}
+                                              
+                                              <option value="{{Destination.value}}">{{Destination.name}}</option>
+                                              {% endfor %}
+                                          </select>
+                                        </div>
+                                        <div class="form-group last">
+                                            <button class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>				
+
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <!-- NAVIGATION -->
+        <div id="menu">
+            <nav class="navbar-wrapper navbar-default">
+                <div class="container">
+                    <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'my-booking' %}">Booking Page</a></li>
+                            <li><a href="{% url 'my-watchlist' %}">my-watchlist</a></li>
+                            <li class="ymm-sw">
+                            <li><a href="{% url 'my-profile' %}">My Profile</a></li>
+                            <li><a href="{% url 'user-logout' %}">logout</a></li>
+                            <li><a href="{% url 'search' %}">Find-car</a></li>                          
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- /.Cars section -->
+        
+        <!-- /.package section -->
+        <div id="package">
+            <div class="container">
+                <div class="row package-option">
+
+                    {% for Car in pro %}
+                    <div class="col-sm-3">
+                        <div class="price-box wow fadeInUp">
+                            <div class="price-heading text-center">
+
+                                <!-- /.package icon -->
+                                
+                                <img src="{{Car.pic.url}}" alt="Image"  width="120" height="120" >
+                                <!-- /.package name -->
+                                <h3>{{Car.name}}</h3>
+                            </div>
+
+                            <!-- /.price -->
+                            <div class="price-group text-center">
+                                <span class="dollar">INR</span>
+                                <span class="price">{{Car.price}}</span>
+                            </div>
+
+                            <!-- /.package features -->
+                            <ul class="price-feature text-center">
+                                <li><strong>Total seat:</strong>{{Car.totalseat}}</li>
+                                <li><strong>Available seat:</strong{{Car.availableseat}}</li>
+                                <li><strong>Pick up:</strong>{{Car.startpoint}}</li> 
+                                <li><strong>Destination:</strong>{{Car.destination}}</li> 
+                                <li><strong>Date:</strong>{{Car.date}}</li>				  
+                            </ul>
+
+                            <!-- /.package button -->
+                            <div class="price-footer text-center">
+                                <a class="btn btn-price" href="{% url 'userview-car' Car.id %}">BOOKING</a>
+                            </div>	
+                        </div>
+                    </div>
+                    {% endfor %}                  
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- /.testimonial section -->
+
+        <!-- /.footer -->
+        <footer id="footer">
+            	
+            <hr>
+            <div class="footer-bottum">
+                <div id="copyright">
+                    <div class="container">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <!-- /.social links -->
+                            <div class="social text-center">
+                                <ul>
+                                    <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>	
+
+                            <div class="text-center wow fadeInUp" style="font-size: 14px;">Carpooling system</div>
+                            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+                        </div>	
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+
+       <!-- /.javascript files -->
+       <script src="{% static 'js/jquery.js' %}"></script>
+       <script src="{% static 'js/bootstrap.min.js' %}"></script>
+       <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+       <script src="{% static 'js/custom.js' %}"></script>
+       <script src="{% static 'js/jquery.sticky.js' %}"></script>
+       <script src="{% static 'js/wow.min.js' %}"></script>
+       <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+       <script src="{% static 'js/google.js' %}"></script> 
+       <script src="{% static 'js/booking.js' %}"></script> 
+       <script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script> 
+       <script src="{% static 'js/jquery.validate.min.js' %}"></script> 
+
+       <script src="{% static 'js/snap.svg-min.js' %}"></script> 
+       <script src="{% static 'js/hovers.js' %}"></script> 
+
+
+       </script>
+
+      
+
+   </body>
+</html>

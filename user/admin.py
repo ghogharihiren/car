@@ -8,4 +8,8 @@ class adminuser(admin.ModelAdmin):
     
 @admin.register(cart)
 class cartAdmin(admin.ModelAdmin):
-    list_display = ['uid']    
+    list_display = ['uid']
+    
+@admin.register(book)
+class BuyAdmin(admin.ModelAdmin):
+    list_display = ['Car','Passenger','booking_date']

@@ -4,7 +4,7 @@
     <head>
 
         <!-- /.website title -->
-        <title>INDEX</title>
+        <title>My-booking</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta charset="UTF-8" />
         <!-- CSS Files -->
@@ -86,7 +86,7 @@
 
                     <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{% url 'my-booking' %}">My-booking</a></li>
+                            <li><a href="{% url 'user-index' %}">Home</a></li>
                             <li><a href="{% url 'my-watchlist' %}">my-watchlist</a></li>
                             <li class="ymm-sw">
                             <li><a href="{% url 'my-profile' %}">My Profile</a></li>
@@ -100,58 +100,67 @@
             </nav>
         </div>
 
-        <div id="carssection">
+        <div id="booking-2">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="wow fadeInLeft">BOOK YOUR RIDE</h2>
-                    <div class="title-line wow fadeInRight"></div>
-                </div>
-                <div class="row carssections">
-                    <div id="cars-grid" class="cars-grid"> 
-                        {% for Car in Car%}
-                        {% if Car.availableseat > 0 %}
-                        <div class="screentow wow fadeInUp" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-                            <figure>
-                                <img src="{{Car.pic.url}}"  alt="Image" width="120" height="120"/>
-                                <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
-                                <figcaption>
-                                    <div class="overflow">
-                                        <h2>{{Car.name}}</h2>  
-                                        <p>availableseat:{{Car.availableseat}}</p>
-                                        <p>journy:{{Car.startpoint}} to {{Car.destination}}</p>
-                                    </div> 
-                                    <div class="car-price-content">
-                                        <b class="overflow car-price">{{Car.price}}</b><b class="price-currency">INR</b><br>                                    
-                                    </div> 
-                                    <div class="car-details">
-                                        <div class="">                                            
-                                            <ul class="car-features">
-                                                <li><i class="fa fa-briefcase" data-tooltip=""></i></li>
-                                                <li><i class="fa fa-asterisk" data-tooltip=""></i></li>
-                                                <li><i class="fa fa-rss" data-tooltip=""></i></li>
-                                                <li><i class="fa fa-certificate" data-tooltip=""></i></li>
-                                                <li><i class="fa fa-flash" data-tooltip=""></i></li> 
-                                                <li><i class="fa fa-music" data-tooltip=""></i></li> 
-                                            </ul>
-                                            <div class="clearfix"></div> 								
-                                        </div>  
-                                        <div class="">
-                                            <ul class="checklist">
-                                                <li><i class="fa fa-check"></i>{{Car.model}}</li>
-                                                <li><i class="fa fa-check"></i>{{Car.date}}</li>                                         
-                                            </ul>	
-                                        </div>                                         
-    
-                                        <a href="{% url 'userview-car' Car.id%}" <button  class="btn-primary booking-btn">BOOKING</button></a>	
-    
+                <div class="row">
+                    {{msg}}
+                    {% for book in Book %}
+                    {% if book.bookingseat > 0%}
+                    <div class="col-md-9">
+                        <section id="id-130" class="booking booking-2 booking-car">
+                            <div class="booking-section">
+                                <div class="booking-top-nav wow fadeInTop animated" data-wow-delay="0.9s">                                
+                                </div>
+                                <div class="stpe-content">
+                                    <div class="direction-data wow fadeInDown animated"></div>
+                                    <div class="cars-data wow fadeInUpBig animated"> 
+                                        <div class="car-item wow fadeInLeft animated">
+                                            <div class="li-car col-xs-12 col-sm-5 col-md-5">
+                                                <img src="{{book.Car.pic.url}}" alt="img" width=200px>
+                                            </div>
+                                            <div class="li-car-name col-sm-5 col-md-5">
+                                                <h2>Car:{{book.Car.name}},{{book.Car.model}}</h2>
+                                                <p>booking seat:{{book.bookingseat}}</p>
+                                                <div class="car-details">
+                                                    <div class="">
+                                                       
+                                                        <div class="clearfix"></div>
+                                                        <ul class="checklist">
+                                                            <li>journy:{{book.Car.startpoint}} to {{book.Car.destination}}</li>
+                                                            
+                                                        </ul> 
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="li-car-price col-xs-12 col-sm-2 col-md-2"> 
+                                                <div class="car-price-content">
+                                                    <b class="overflow car-price">Rs</b><b class="price-currency">{{book.amount}}</b><b class="price-">
+                                                    <div class="btn_container">
+                                                   	
+                                                        {% if book.status == False  %}
+                                                        {% if book.order_status == False %}
+                                                        <button class="btn btn-info" disabled>booking has been canceled</button>
+                                                        {% else %}
+                                                        <a href="{% url 'cancel-booking' book.id %}"><button class="btn btn-info">booking Cancel</button></a>
+                                                        {% endif %}
+                                                        {% else %}
+                                                        <button class="btn btn-info" disabled>journy complate</button>
+                                                        {% endif %}
+                                                     
+                                                    </div>
+                                                    </div>                                                
+                                                </div>                                            
+                                            </div>
+                                        </div>                                                                         
+                                    </div>                      
+                                    <div class="pay-data hide wow fadeInLeft padding-10">                                                                               
                                     </div>
-                                </figcaption>
-                            </figure>
-                        </div>  
-                        {% endif %}
-                        {% endfor %} 
-                                      
-                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                    {% endif %}   
+                    {% endfor %}             
                 </div>
             </div>
         </div>

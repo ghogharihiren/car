@@ -25,13 +25,15 @@ class cart(models.Model):
     
     
 class book(models.Model):
-    car=models.ForeignKey(car,on_delete=models.CASCADE)
-    passenger=models.ForeignKey(passenger,on_delete=models.CASCADE)
+    Car=models.ForeignKey(car,on_delete=models.CASCADE)
+    Passenger=models.ForeignKey(passenger,on_delete=models.CASCADE)
     pay_id = models.CharField(max_length=50,null=True,blank=True)
     pay_method = models.BooleanField(default=True) # True - online # false - COD
     booking_date = models.DateTimeField(auto_now_add=True)
-    feedback = models.TextField(null=True,blank=True)
-
+    status = models.BooleanField(default=False)
+    journy_status = models.BooleanField(default=True)
+    bookingseat=models.IntegerField(default=0)
+    amount=models.IntegerField(default=0)
     def __self__(self):
-        return self.car.name + self.passenger.name
+        return self.Car.name + '>>' + self.Passenger.name
     
