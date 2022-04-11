@@ -5,15 +5,6 @@
 <title>View Product Details</title>
 {% endblock %}
 
-{% block add-car %}
-<li class="nav-item">
-  <a class="nav-link active" href="{% url 'add-car' %}">
-    <!-- <i class="ni ni-planet text-orange"></i> -->
-    <i class="fas fa-shopping-bag" style="color: red;"></i>
-    <span class="nav-link-text">Add Products</span>
-  </a>
-</li>
-{% endblock %}
 
 
 {% block content %}
@@ -53,9 +44,6 @@
                         <input type="text" id="input-email" class="form-control" disabled value="{{Book.amount}}" name="price" placeholder="">
                       </div>
                     </div>
-                  </div>
-                  <div class="pl-lg-4">
-                    <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-username">Total seat</label>

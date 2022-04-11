@@ -1,6 +1,17 @@
 {% extends 'header.html' %} {% load static %} {% block title %}
 <title>Profile Change</title>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block profile %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'profile' %}">
+        <i class="ni ni-single-02 text-yellow"></i>
+        <span class="nav-link-text">Profile</span>
+    </a>
+</li>    
+{% endblock %}
+
+{% block content %}
 <!-- Header -->
 <!-- Header -->
 <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url({{uid.pic.url}}); background-size: cover; background-position: center top;">

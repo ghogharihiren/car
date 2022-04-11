@@ -5,6 +5,15 @@
 <title>My car</title>
 {% endblock %}
 
+{% block view-car %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'view-car' %}">
+      <i class='fas fa-car' style='font-size:18px'></i>
+      <span class="nav-link-text">view car</span>
+    </a>
+</li>
+{% endblock %}
+
 {% block content %}
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -37,7 +46,7 @@
                   <th scope="col" class="sort" data-sort="budget">model</th>
                   <th scope="col" class="sort" data-sort="status">avaliableseat</th>
                   <th scope="col" class="sort" data-sort="status">date</th>
-                  <th scope="col" class="sort" data-sort="status">price</th>
+                  <th scope="col" class="sort" data-sort="status">price per seat</th>
             
             
                   <th scope="col"></th>

@@ -124,7 +124,7 @@ def search(request):
     Destination=destination.objects.all()
     
     if request.method == 'POST':
-        query = request.POST['search']
+        query=request.POST['start']
         Car = list(car.objects.filter(startpoint=query))
         a = query.split()
             
@@ -253,7 +253,7 @@ def paymenthandler(request,pk):
                     amount=amount/100
                 )
                
-                return render(request, 'my-booking.html',{'msg':'payment secces'})
+                return render(request, 'user-index.html',{'msg':'payment secces'})
             except:
 
                 # if there is an error while capturing payment.

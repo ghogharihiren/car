@@ -2,9 +2,17 @@
 {% load static %}
 
 {% block title %}
-<title>My Products</title>
+<title>My book car</title>
 {% endblock %}
 
+{% block book-car %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'book-car' %}">
+        <i class='fas fa-car' style='font-size:18px'></i>
+        <span class="nav-link-text">book car</span>
+    </a>
+</li>
+{% endblock %}
 {% block content %}
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -53,6 +61,8 @@
                   <th scope="col" class="sort" data-sort="status">Passenger Name</th>
                   <th scope="col" class="sort" data-sort="status">journy Date</th>
                   <th scope="col" class="sort" data-sort="status">View in Detail</th>
+                  <th scope="col" class="sort" data-sort="status">Complete journy</th>
+
 
                   <th scope="col"></th>
                 </tr>
@@ -60,6 +70,7 @@
               <tbody class="list">
                 {% for Book in Book %}
                 {% if Book.Car.uid.email == request.session.email %}
+                {% if Book.journy_status == False %}
                
 
                 <tr>
@@ -90,11 +101,14 @@
                     <a href="{% url 'my-bookcar' Book.id %}" <button class="btn btn-primary">View</button></a>
                   </td>
                   <td>
+                    <a href="{% url 'complate-journy' Book.id %}" <button class="btn btn-primary">Complete Journy</button></a>
+                  </td>
+                  <td>
                   </td>
                   <td class="text-right">                  
                   </td>
                 </tr>
-            
+                {% endif %}
                 {% endif %}
                 {% endfor %}
               </tbody>

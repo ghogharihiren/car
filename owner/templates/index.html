@@ -1,4 +1,14 @@
 {% extends 'header.html' %} {% load static %} {% block content %}
+
+
+{% block home %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'index' %}">
+        <i class="ni ni-tv-2 text-primary"></i>
+        <span class="nav-link-text">Home</span>
+    </a>
+</li>
+{% endblock %} 
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
         <div class="header-body">

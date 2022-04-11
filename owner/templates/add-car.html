@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block title %}
-<title>Profile Change</title>
+<title>Add car</title>
 {% endblock %}
 
 {% block add-car %}
 <li class="nav-item">
-  <a class="nav-link active" href="{% url 'add-car' %}">
-    <!-- <i class="ni ni-planet text-orange"></i> -->
-    <i class="fas fa-shopping-bag" style="color: red;"></i>
-    <span class="nav-link-text">Add car</span>
-  </a>
+    <a class="nav-link active" href="{% url 'add-car' %}">
+        <i class='fas fa-car' style='font-size:18px'></i>
+        <span class="nav-link-text">Add car</span>
+    </a>
 </li>
 {% endblock %}
+
 
 
 {% block content %}
@@ -104,22 +104,20 @@
                           <input type="number" id="input-email" class="form-control" name="price" placeholder="price per seat" required>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-email">date</label>
-                        <input type="text" id="input-email" class="form-control" name="date" placeholder="date" required>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Date</label>
+                          <input type="celender" id="input-email" class="form-control" name="date" placeholder="journy date" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">pic</label>
+                          <input type="file" id="input-email" class="form-control" name="pic" placeholder="Car picture" required>
+                        </div>
                       </div>
                     </div>
-                     
-               
-              
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-last-name">Product Pic</label> 
-                        <input type="file" id="input-last-name" class="form-control"  name="carpic" placeholder="Last name" required >
-                      </div>
-                    </div>
+                    
                  
                 <!-- <hr class="my-4" />
                 <h6 class="heading-small text-muted mb-4">About me</h6>
@@ -129,7 +127,7 @@
                     <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
                   </div>
                 </div> -->
-                <button class="btn btn-primary" type="submit" style="margin-left: 20px;"><i class="fa fa-shopping-bag"></i> Submit </button>
+                <button class="btn btn-primary" type="submit" style="margin-left: 20px;"><i class="fa fa-car"></i> Submit </button>
               </form>
             </div>
           </div>

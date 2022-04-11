@@ -30,8 +30,7 @@ class book(models.Model):
     pay_id = models.CharField(max_length=50,null=True,blank=True)
     pay_method = models.BooleanField(default=True) # True - online # false - COD
     booking_date = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=False)
-    journy_status = models.BooleanField(default=True)
+    journy_status = models.BooleanField(default=False)
     bookingseat=models.IntegerField(default=0)
     amount=models.IntegerField(default=0)
     def __self__(self):

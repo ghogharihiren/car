@@ -41,7 +41,7 @@ def register(request):
             msg='email is already registered'
             return render(request,'login.html',{'msg':msg})
         except: 
-            #if len(request.POST['password']) > 7:
+            if len(request.POST['password']) > 7:
                 if request.POST['password'] == request.POST['cpassword']:
                     otp=randrange(1000,9999)
                     message = f"""Hello {request.POST['name']},
@@ -61,8 +61,8 @@ def register(request):
                     }
                     return render(request,'otp.html',{'otp':otp})
                 
-                return render(request,'register.html',{'msg':'both should be same'})
-               
+                return render(request,'register.html',{'msg':'both should be not same'})
+            return render(request,'register.html')   
     return render(request,'register.html')
 
 def profile(request):
@@ -191,15 +191,10 @@ def edit_car(request,pk):
 def book_car(request):
     uid=owner.objects.get(email=request.session['email'])
     if request.method == 'POST':
-        if request.POST['journy_status'] == 'panding':
-            Book = book.objects.filter(status=False)
-        elif request.POST['journy_status'] == 'complate':
-            Book = book.objects.filter(status=True)  
-        else:
-            Book = book.objects.all()              
+        Book = book.objects.all()              
             
         return render('book-car.html',{'uid':uid,'Book':Book})
-    Book=book.objects.filter(status=False)
+    Book=book.objects.filter(journy_status=False)
     return render(request,'book-car.html',{'uid':uid,'Book':Book})
 
 def complate_journy(request,pk):

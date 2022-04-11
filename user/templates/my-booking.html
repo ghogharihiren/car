@@ -103,7 +103,6 @@
         <div id="booking-2">
             <div class="container">
                 <div class="row">
-                    {{msg}}
                     {% for book in Book %}
                     {% if book.bookingseat > 0%}
                     <div class="col-md-9">
@@ -136,15 +135,10 @@
                                                 <div class="car-price-content">
                                                     <b class="overflow car-price">Rs</b><b class="price-currency">{{book.amount}}</b><b class="price-">
                                                     <div class="btn_container">
-                                                   	
-                                                        {% if book.status == False  %}
                                                         {% if book.order_status == False %}
                                                         <button class="btn btn-info" disabled>booking has been canceled</button>
                                                         {% else %}
                                                         <a href="{% url 'cancel-booking' book.id %}"><button class="btn btn-info">booking Cancel</button></a>
-                                                        {% endif %}
-                                                        {% else %}
-                                                        <button class="btn btn-info" disabled>journy complate</button>
                                                         {% endif %}
                                                      
                                                     </div>
