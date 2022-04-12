@@ -135,10 +135,10 @@
                                                 <div class="car-price-content">
                                                     <b class="overflow car-price">Rs</b><b class="price-currency">{{book.amount}}</b><b class="price-">
                                                     <div class="btn_container">
-                                                        {% if book.order_status == False %}
-                                                        <button class="btn btn-info" disabled>booking has been canceled</button>
-                                                        {% else %}
+                                                        {% if book.journy_status == False %}
                                                         <a href="{% url 'cancel-booking' book.id %}"><button class="btn btn-info">booking Cancel</button></a>
+                                                        {% else %}
+                                                        <a href="}"><button class="btn btn-info">journy complate</button></a>
                                                         {% endif %}
                                                      
                                                     </div>

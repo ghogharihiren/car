@@ -36,7 +36,7 @@
                 </div>
               </div>
             </div>
-            {{msg}}
+            <h2 style="color: red; text-align: center;">{{msg}} </h2>
             <div class="card-body">
               <form action="{% url 'add-car' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
