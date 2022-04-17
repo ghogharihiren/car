@@ -11,7 +11,7 @@ from django.http import HttpResponseBadRequest
 from datetime import date
 from random import randrange
 
-def user_index(request):
+def user_index(request): 
     uid = passenger.objects.get(email=request.session['uemail'])
     Car=o.car.objects.all().order_by('?')
     Startpoint=o.startpoint.objects.all()

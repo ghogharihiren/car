@@ -121,7 +121,7 @@ def forgot_password(request):
             return render(request,'login.html',{'msg':'new password send in your email'})
         except :
             return render(request,'forgot-password.html',{'msg':'your email id not registered'})
-    return render(request,'login.html')       
+    return render(request,'forgot-password.html')       
         
         
 def logout(request):
@@ -191,8 +191,7 @@ def edit_car(request,pk):
 def book_car(request):
     uid=owner.objects.get(email=request.session['email'])
     if request.method == 'POST':
-        Book = book.objects.all()              
-            
+        Book = book.objects.all()
         return render('book-car.html',{'uid':uid,'Book':Book})
     Book=book.objects.filter(journy_status=False)
     return render(request,'book-car.html',{'uid':uid,'Book':Book})
@@ -201,7 +200,7 @@ def complate_journy(request,pk):
     uid=owner.objects.get(email=request.session['email'])
     Book=book.objects.get(id=pk)
     Book.journy_status=True
-    Book.save()
+    Book.Car.delete()
     return redirect('book-car')
 
 def my_bookcar(request,pk):
